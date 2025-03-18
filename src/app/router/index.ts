@@ -6,7 +6,8 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: () => import('@/pages/login')
+      component: () => import('@/pages/login'),
+      meta: { layout: 'auth' }
     }
   ]
 });

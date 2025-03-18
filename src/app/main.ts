@@ -2,9 +2,12 @@ import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 
 import router from './router';
-import { RouterView } from 'vue-router';
+import App from './App.vue';
 
-const app = createApp(RouterView);
+import '@fontsource-variable/inter';
+import './index.css';
+
+const app = createApp(App);
 
 app.use(createPinia());
 app.use(router);
