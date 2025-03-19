@@ -26,7 +26,8 @@ export default {
   			},
   			primary: {
   				DEFAULT: 'var(--primary)',
-  				foreground: 'var(--primary-foreground)'
+  				foreground: 'var(--primary-foreground)',
+  				shadow: 'var(--primary-shadow)',
   			},
   			secondary: {
   				DEFAULT: 'var(--secondary)',
@@ -41,8 +42,8 @@ export default {
   				foreground: 'var(--accent-foreground)'
   			},
   			destructive: {
-  				DEFAULT: 'hsl(var(--destructive))',
-  				foreground: 'hsl(var(--destructive-foreground))'
+  				DEFAULT: 'var(--destructive)',
+  				foreground: 'var(--destructive-foreground)'
   			},
         'text-dark': 'var(--text-dark)',
         'text-light': 'var(--text-light)',

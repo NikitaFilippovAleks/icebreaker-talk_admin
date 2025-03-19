@@ -7,7 +7,11 @@ export const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: 'bg-primary text-primary-foreground shadow hover:bg-primary/90',
+        default: `bg-primary text-text-dark
+          relative rounded-md transition duration-200 
+          hover:text-[var(--hover-text)]
+          hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[4px_4px_0px_var(--primary-shadow)] 
+          active:translate-x-0 active:translate-y-0 active:shadow-none`,
         destructive:
           'bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90',
         outline:

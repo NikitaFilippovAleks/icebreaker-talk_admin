@@ -6,7 +6,6 @@ import CardContent from '@/shared/components/ui/card/CardContent.vue';
 import CardHeader from '@/shared/components/ui/card/CardHeader.vue';
 import {
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -42,8 +41,8 @@ const onSubmit = handleSubmit(values => {
         <Logo />
       </div>
     </CardHeader>
-    <CardContent>
-      <form class="w-2/3 space-y-6" @submit="onSubmit">
+    <CardContent class="flex justify-center">
+      <form class="w-5/6 space-y-5" @submit="onSubmit">
         <FormField
           v-slot="{ componentField }"
           name="login"
@@ -71,7 +70,10 @@ const onSubmit = handleSubmit(values => {
             <FormMessage />
           </FormItem>
         </FormField>
-        <Button type="submit"> Submit </Button>
+
+        <div class="flex justify-center">
+          <Button type="submit">Войти</Button>
+        </div>
       </form>
     </CardContent>
   </Card>
