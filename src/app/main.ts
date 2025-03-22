@@ -1,12 +1,16 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
+import { VueQueryPlugin } from '@tanstack/vue-query';
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
 
 import router from './router';
-import { RouterView } from 'vue-router';
+import App from './App.vue';
 
-const app = createApp(RouterView);
+import '@fontsource-variable/inter';
+import './index.css';
 
-app.use(createPinia());
-app.use(router);
-
-app.mount('#app');
+createApp(App)
+  .use(VueQueryPlugin)
+  .use(createPinia().use(piniaPluginPersistedstate))
+  .use(router)
+  .mount('#app');
