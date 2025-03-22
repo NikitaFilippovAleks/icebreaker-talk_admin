@@ -9,13 +9,13 @@ interface IProps {
   password: string;
 }
 
-export const login = async ({ email, password }: IProps) => {
+export const loginApi = async ({ email, password }: IProps) => {
   const body = {
     email,
     password
   };
 
-  const response = await apiInstance.post<unknown, IErrorResponseData>(
+  const response = await apiInstance.post<{ access_token: string; refresh_token: string }, IErrorResponseData>(
     API_URLS.login,
     body
   );
@@ -26,5 +26,9 @@ export const login = async ({ email, password }: IProps) => {
     throw new Error(mainError);
   }
 
-  return response.data || ({} as unknown);
+  if (!response.data) {
+    throw new Error('Неизвестная ошибка');
+  }
+
+  return response.data;
 };

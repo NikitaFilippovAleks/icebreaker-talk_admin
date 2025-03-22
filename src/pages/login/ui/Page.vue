@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { login as loginMutationFunc } from '@/entities/auth';
+import { useLogin, loginApi } from '@/entities/auth';
 import Logo from '@/shared/components/icons/Logo.vue';
 import { Button } from '@/shared/components/ui/button';
 import Card from '@/shared/components/ui/card/Card.vue';
@@ -21,6 +21,8 @@ import { useForm } from 'vee-validate';
 import { ref, watch } from 'vue';
 import z from 'zod';
 
+const login = useLogin()
+
 const commonMessage = ref<string | null>(null);
 
 const formSchema = toTypedSchema(
@@ -38,21 +40,18 @@ watch(values, () => {
   commonMessage.value = null
 })
 
-const { mutate: login, isPending } = useMutation({
-    mutationFn: loginMutationFunc,
+const { mutate, isPending } = useMutation({
+    mutationFn: loginApi,
     onError: error => {
-      console.log('error:', error.message)
       commonMessage.value = error.message;
     },
-    onSuccess: async () => {
-      // if (setIsBookmarked) {
-      //   setIsBookmarked(action === 'add');
-      // }
+    onSuccess: async ({ access_token: accessToken, refresh_token: refreshToken }) => {
+      login({ accessToken, refreshToken })
     }
   });
 
 const onSubmit = handleSubmit(values => {
-  login(values);
+  mutate(values);
 });
 </script>
 
